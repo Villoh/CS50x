@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username"
+                type="text" required>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password" required>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="confirmation" placeholder="Password (again)" type="password" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+
+    <!-- Add the following script to handle AJAX request and display the alert -->
+    <script>
+        // document.querySelector("form").addEventListener("submit", function(event) {
+        //     event.preventDefault(); // Prevent the form from submitting normally
+
+        //     const username = document.querySelector("input[name='username']").value;
+
+        //     // Send an AJAX request to check if the username already exists
+        //     fetch(`/check_username/${username}`)
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             if (data.exists) {
+        //                 alert("Username already exists. Please choose a different username.");
+        //             } else {
+        //                 // If the username is available, submit the form
+        //                 event.target.submit();
+        //             }
+        //         })
+        //         .catch(error => console.error(error));
+        // });
+    </script>
+{% endblock %}

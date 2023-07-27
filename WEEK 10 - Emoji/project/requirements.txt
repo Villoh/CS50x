@@ -1,0 +1,4 @@
+logging
+discord
+deepl
+aiohttp

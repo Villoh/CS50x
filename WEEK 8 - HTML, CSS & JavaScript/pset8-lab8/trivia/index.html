@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+            function checkFirstAnswer(answer, event) {
+                const button = event.target;
+                // Save original background color
+                const originalBg = button.style.backgroundColor;
+
+                if (button.innerText === answer) {
+                    // Change to green
+                    button.style.backgroundColor = 'green';
+                    document.getElementById('first-feedback').innerText = 'Correct!';
+                    // Revert after 500ms
+                    setTimeout(() => {
+                        button.style.backgroundColor = originalBg;
+                    }, 1000);
+
+                } else {
+                    // Change to red
+                    button.style.backgroundColor = 'red';
+                    document.getElementById('first-feedback').innerText = 'Incorrect!';
+                    // Revert after 500ms
+                    setTimeout(() => {
+                        button.style.backgroundColor = originalBg;
+                    }, 1000);
+
+                }
+            }
+
+            function checkSecondAnswer(answer) {
+                const input = document.getElementById('second-input');
+                // Save original background color
+                const originalBg = input.style.backgroundColor;
+
+                if (input.value.toLowerCase() === answer.toLowerCase()) {
+                    // Change to green
+                    input.style.backgroundColor = 'green';
+                    document.getElementById('second-feedback').innerText = 'Correct!';
+                    // Revert after 500ms
+                    setTimeout(() => {
+                        input.style.backgroundColor = originalBg;
+                    }, 1000);
+                } else {
+                    // Change to green
+                    input.style.backgroundColor = 'red';
+                    document.getElementById('second-feedback').innerText = 'Incorrect!';
+                    // Revert after 500ms
+                    setTimeout(() => {
+                        input.style.backgroundColor = originalBg;
+                    }, 1000);
+                }
+            }
+        </script>
+
+    </head>
+
+    <body>
+
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice</h2>
+                <hr>
+
+                <h3>What is the capital of Spain?</h3>
+
+                <button class="first-button" onclick="(function(){ checkFirstAnswer('Madrid', event) })()">Paris</button>
+                <button class="first-button" onclick="(function(){ checkFirstAnswer('Madrid', event) })()">London</button>
+                <button class="first-button" onclick="(function(){ checkFirstAnswer('Madrid', event) })()">Madrid</button>
+
+                <div id="first-feedback"></div>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <h3>What European country is Madrid the capital of?</h3>
+
+                <input type="text" id="second-input">
+
+                <button onclick="checkSecondAnswer('Spain')">Confirm Answer</button>
+
+                <div id="second-feedback"></div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
